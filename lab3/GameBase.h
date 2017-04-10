@@ -25,9 +25,13 @@ public:
 
 	static GameBase* start(char*[], int);
 
+	static shared_ptr<GameBase> instance();
+
+
 protected:
-	static string gameName;
+	static string game_name;
 	static int numTurns;
+	static shared_ptr<GameBase> ptr;
 
 	int rows_;
 	int cols_;
