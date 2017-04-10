@@ -196,45 +196,7 @@ void NineAlmondsGame::turnChangeHelper(unsigned startCol, unsigned startRow, str
 		return turnChangeHelper(startCol, startRow, moves);
 	}
 }
-/*
-void NineAlmondsGame::prompt(unsigned & column, unsigned & row)
-{
-	string input;
-	cout << "Enter your desired position in the form of 'x, y' or type 'quit' to exit" << '\n';
-	getline(cin, input);
 
-	if (input == "quit") {
-		throw quitEntered;
-	}
-
-	auto pos = input.find(',');
-
-	if (pos == -1) {
-		cout << "NO COMMA found within input please enter according to desired format" << endl;
-		return prompt(column, row);
-	}
-
-	input.replace(pos, 1, " ");
-
-	//make sure space is in the middle and the size of the string is 3
-
-	if (input.size() == 3) {
-		istringstream iss(input);
-		iss >> column;
-		iss >> row;
-
-		if (column < 0 || column > 4 || row < 0 || row > 4) {
-			cout << " input was out of bounds, range for x and y is [0,4]. Please enter input accordingly." << endl;
-			return prompt(column, row);
-		}
-	}
-
-	else {
-		cout << "INPUT WAS NOT OF DESIRED FORMAT- please enter according to instructions" << endl;
-		return prompt(column, row);
-	}
-}
-*/
 
 bool NineAlmondsGame::validMove(int startCol, int startRow, int endCol, int endRow) {
 	//check if startSpot has an almond and check if endSpot is empty first
