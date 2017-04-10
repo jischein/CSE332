@@ -8,7 +8,9 @@ using namespace std;
 
 enum piece_color { red, black, white, brown, invalid_color, no_color };
 
+string piece_color_toString(piece_color);
 
+piece_color string_to_pieceColor(string &);
 
 struct game_piece {
 
