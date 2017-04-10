@@ -10,31 +10,61 @@
 using namespace std;
 
 int GameBase::numTurns = 0;
-string GameBase::gameName = "";
+string GameBase::game_name = "";
+shared_ptr<GameBase> GameBase::ptr = nullptr;
+
 
 GameBase::GameBase(int rows, int cols) : rows_(rows), cols_(cols), longestPiece(0), pieces(vector<game_piece>()) {};
 
- GameBase* GameBase::start(char* args[], int numArgs) {
-	if (numArgs != numArgs) {
+ GameBase* GameBase::start(char* args[], int argsCount) {
+
+	//check if we've already initialized the ptr to a game 
+	if (ptr != nullptr)
+	 {
+		 throw pointerAlreadyInit;
+	 }
+
+	if (argsCount != numArgs) {
 		throw wrongNumArgs;
 	}
 
-	if (string(args[1]) != "NineAlmonds" && string(args[1]) != "MagicSquare") {
-		GameBase* null = 0;
-		return null;
+	else {
+		if (string(args[gameName]) == "NineAlmonds") {
+
+			try {
+				game_name = args[gameName];
+				ptr = make_shared<NineAlmondsGame>();
+			}
+
+			catch (bad_alloc)
+			{
+				throw;
+			}
+
+		}
+
+		else if (string(args[gameName]) == "MagicSquare") {
+
+			try {
+				game_name = args[gameName];
+				ptr = make_shared<MagicSquareGame>();
+			}
+
+			catch (bad_alloc)
+			{
+				throw;
+			}
+
+		}
+
+		else {
+			throw wrongGameName;
+		}
+
+
 	}
 
-	else {
-		if (string(args[1]) == "NineAlmonds") {
-			NineAlmondsGame * game = new NineAlmondsGame();
-			return game;
-		}
-		else if (string(args[1]) == "MagicSquare") {
-			MagicSquareGame * game2 = new MagicSquareGame();
-			return game2; 
-		}
-		//TODO: reutrn null pointer to 0
-	}
+
 }
 
  void GameBase::prompt(unsigned int & column, unsigned int & row)
@@ -107,4 +137,16 @@ int GameBase::play() {
 
 	return success;
 
+}
+
+shared_ptr<GameBase> GameBase::instance()
+{
+	if (ptr == nullptr)
+	{
+		throw nullPtr;
+	}
+	else
+	{
+		return ptr;
+	}
 }
