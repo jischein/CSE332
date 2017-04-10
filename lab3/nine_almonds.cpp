@@ -51,11 +51,11 @@ bool NineAlmondsGame::stalemate()
 		return false;
 	}
 
-	for (int i = 0; i < 25; ++i) {
+	for (int i = 0; i < NINE_ROWS * NINE_COLS; ++i) {
 		//almond found check to see if any valid moves exist between this almond and all other pieces that are empty
 		if (pieces[i].name == "almond") {
 
-			for (int j = 0; j < 25; ++j) {
+			for (int j = 0; j < NINE_ROWS * NINE_COLS; ++j) {
 
 				if (pieces[j].name != "almond") {
 					int startRow = i / (int)cols_;
@@ -245,7 +245,7 @@ void NineAlmondsGame::print() {
 }
 
 //default constructor
-NineAlmondsGame::NineAlmondsGame(): GameBase(5,5) {
+NineAlmondsGame::NineAlmondsGame(): GameBase(NINE_COLS,NINE_ROWS) {
 	for (int i = 0; i < 25; i++) {
 		pieces.push_back(game_piece(no_color, "", " "));
 	}
@@ -265,3 +265,4 @@ NineAlmondsGame::NineAlmondsGame(): GameBase(5,5) {
 	longestPiece = pieces[17].representation.size();
 
 }
+
