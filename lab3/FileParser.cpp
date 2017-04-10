@@ -9,30 +9,6 @@
 using namespace std;
 
 
-int fileParser(vector<string> &v, char * inputFile) {
-	ifstream ifs(inputFile);
-
-	if (ifs.is_open()) {
-		string file_line, file_word;
-		while (getline(ifs, file_line)) {
-
-			istringstream iss(file_line);
-
-			while (iss >> file_word) {
-				v.push_back(file_word);
-			}
-		}
-
-	}
-
-	else {
-		cout << "unable to open file" << endl;
-		cerr << wrongNumArgs << endl;
-	}
-
-	return success;
-}
-
 int usageMessage(const string &programName, const string &error_info, int error_type) {
 	cout << "usage: " << programName;
 
