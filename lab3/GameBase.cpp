@@ -16,7 +16,7 @@ shared_ptr<GameBase> GameBase::ptr = nullptr;
 
 GameBase::GameBase(int rows, int cols) : rows_(rows), cols_(cols), longestPiece(0), pieces(vector<game_piece>()) {};
 
- GameBase* GameBase::start(char* args[], int argsCount) {
+void GameBase::start(char* args[], int argsCount) {
 
 	//check if we've already initialized the ptr to a game 
 	if (ptr != nullptr)
