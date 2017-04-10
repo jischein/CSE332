@@ -23,7 +23,7 @@ public:
 
 	virtual int play();
 
-	static GameBase* start(char*[], int);
+	static void start(char*[], int);
 
 	static shared_ptr<GameBase> instance();
 
