@@ -9,7 +9,6 @@
 
 using namespace std;
 
-enum sideLengthError {BAD_SIDE_LENGTH = 2};
 
 class GameBase {
 
