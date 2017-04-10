@@ -14,7 +14,7 @@
 using namespace std;
 
 //default constructor
-MagicSquareGame::MagicSquareGame() : GameBase(3, 3), numbers(vector<int>()) {
+MagicSquareGame::MagicSquareGame() : GameBase(MAGIC_ROWS, MAGIC_COLS), numbers(vector<int>()) {
 	for (int i = 1; i <= rows_*cols_; ++i) {
 		numbers.push_back(i);
 	}
@@ -255,6 +255,7 @@ void MagicSquareGame::print() {
 	}
 	printRestOfPieces(numbers);
 }
+
 int stringToNum(string s){
 	istringstream iss(s);
 	int result;
@@ -275,7 +276,7 @@ string numToString(unsigned i) {
 	Result = convert.str();
 	return Result;
 }
-
+//print available pieces 
 void printRestOfPieces(vector<int> numbers) {
 	ostringstream oss;
 	oss << "Available pieces: ";
