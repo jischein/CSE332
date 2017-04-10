@@ -8,6 +8,9 @@
 #ifndef NINE_ALMONDS_H
 #define NINE_ALMONDS_H
 
+const int NINE_ROWS = 5;
+const int NINE_COLS = 5;
+
 class NineAlmondsGame: public GameBase{
 public:
 	friend ostream& operator<< (ostream&, const NineAlmondsGame&);
